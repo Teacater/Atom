@@ -21,7 +21,11 @@ symbols = ["H", "He", "Li", "Be", "B",
            "Hs", "Mt", "Ds", "Rg", "Uub"]
 
 
-def get_number():
+def get_atom_number() -> int:
+    """
+    scans integer
+    :return: integer atom number
+    """
     print("Введите целое число больше нуля или символ:", end=" ")
     input_ = input()
     print()
@@ -29,7 +33,7 @@ def get_number():
         a = int(input_)
         if a <= 0:
             print("Атомное число должно быть больше нуля")
-            return get_number()
+            return get_atom_number()
         else:
             if a == 24 or a == 29:
                 print("Конфигурация неправильная, атом является исключением")
@@ -42,10 +46,10 @@ def get_number():
                     print("Конфигурация неправильная, атом является исключением")
                 return i + 1
         print("Такого символа не существует")
-        return get_number()
+        return get_atom_number()
 
 
 if __name__ == '__main__':
     while True:
-        current_cap, s, conf = get_electron_configuration(get_number())
+        s, conf = get_electron_configuration(get_atom_number())
         print_e_configuration(conf, s)
